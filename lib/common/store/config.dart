@@ -27,7 +27,7 @@ class ConfigStore extends GetxController {
     _platform = await PackageInfo.fromPlatform();
   }
 
-  // 标记用户已打开APP
+  // function to sae if the app has already been opened
   Future<bool> saveAlreadyOpen() {
     return StorageService.to.setBool(STORAGE_DEVICE_FIRST_OPEN_KEY, true);
   }
