@@ -19,6 +19,12 @@ class ApplicationController extends GetxController {
     state.page=index;
   }
 
+  void handleNavBarTap(int index)
+  {
+    pageController.jumpToPage(index);
+  }
+
+
   @override
   void onInit() {
     super.onInit();
@@ -33,7 +39,7 @@ class ApplicationController extends GetxController {
           Icons.message_rounded,
           color: AppColors.secondaryElementText,
         ),
-        label: "chat",
+        label: "Chat",
         backgroundColor: AppColors.primaryBackground,
       ),
       const BottomNavigationBarItem(
@@ -45,7 +51,7 @@ class ApplicationController extends GetxController {
           Icons.contact_page_rounded,
           color: AppColors.secondaryElementText,
         ),
-        label: "contact",
+        label: "Contacts",
         backgroundColor: AppColors.primaryBackground,
       ),
       const BottomNavigationBarItem(
@@ -57,7 +63,7 @@ class ApplicationController extends GetxController {
           Icons.person_2_rounded,
           color: AppColors.secondaryElementText,
         ),
-        label: "person",
+        label: "Profile",
         backgroundColor: AppColors.primaryBackground,
       ),
     ];
