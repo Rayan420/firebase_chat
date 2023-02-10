@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_chat/common/entities/entities.dart';
-import 'package:firebase_chat/pages/contact/index.dart';
+import 'package:firebase_chat/pages/contact/state.dart';
 import 'package:get/get.dart';
 import '../../common/entities/user.dart';
 import '../../common/store/user.dart';
@@ -14,7 +14,7 @@ class ContactController extends GetxController{
     final token = UserStore.to.token;
 
     @override
-    void onRead()
+    void onReady()
     {
       super.onReady();
       asyncLoadAllData();
@@ -96,7 +96,7 @@ class ContactController extends GetxController{
 
     }
 
-    asyncLoadAllData()async{
+    asyncLoadAllData() async{
      var usersbase = await db.collection("users").where("id", isNotEqualTo: token).withConverter(
           fromFirestore: UserData.fromFirestore,
           toFirestore: (UserData userdata, options)=>userdata.toFirestore()

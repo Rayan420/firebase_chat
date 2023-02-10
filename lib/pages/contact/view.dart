@@ -16,7 +16,7 @@ class ContactPage extends GetView<ContactController> {
 
   @override
   Widget build(BuildContext context) {
-
+print(controller.state.contactList.length);
     AppBar _buildAppBar()
     {
       return transparentAppBar(

@@ -25,11 +25,10 @@ class ApplicationPage extends GetView<ApplicationController> {
         controller: controller.pageController,
         onPageChanged: controller.handlePageChanged,
         children: [
-          Center(
-            child: Text("Chats"),),
+          Center(child: Text("Chats"),),
           ContactPage(),
           Center(child: Text("Profile")),
-          Center(child: Text("Contacts")),
+
         ],
 
       );

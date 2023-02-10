@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'routes.dart';
 import 'package:firebase_chat/pages/contact/index.dart';
-import 'package:firebase_chat/pages/chat/index.dart';
+import 'package:firebase_chat/pages/messages/chat/index.dart';
 
 class AppPages {
   static const INITIAL = AppRoutes.INITIAL;
@@ -43,22 +43,22 @@ class AppPages {
       ],
     ),
 
-    // 最新路由
+    // latest route
 
-    // 首页
+    // front page
     GetPage(name: AppRoutes.Contact,
         page: () => ContactPage(), binding: ContactBinding()),
 
 
-    //消息
+    //information
 
     //GetPage(name: AppRoutes.Message, page: () => MessagePage(), binding: MessageBinding()),
 
-    //我的
+    //mine
    // GetPage(name: AppRoutes.Me, page: () => MePage(), binding: MeBinding()),
 
 
-    //聊天详情
+    //chat details
     GetPage(name: AppRoutes.Chat, page: () => ChatPage(), binding: ChatBinding()),
 
 
