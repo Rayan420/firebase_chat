@@ -1,17 +1,17 @@
 import 'package:intl/intl.dart';
 
-/// 格式化时间
+/// format time
 String duTimeLineFormat(DateTime dt) {
   var now = DateTime.now();
   var difference = now.difference(dt);
   if (difference.inMinutes < 60) {
     return "${difference.inMinutes} m ago";
   }
-  // 1天内
+  // within 1 day
   if (difference.inHours < 24) {
     return "${difference.inHours} h ago";
   }
-  // 30天内
+  // within 30 days
   else if (difference.inDays < 30) {
     return "${difference.inDays} d ago";
   }
