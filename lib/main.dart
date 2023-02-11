@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(builder: (BuildContext context, Widget? child)=>GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'FastChat',
       theme: ThemeData(
 
         primarySwatch: Colors.blue,
