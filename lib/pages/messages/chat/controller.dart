@@ -48,6 +48,8 @@ Future getImgUrl(String name) async{
   var str = await spaceRef.getDownloadURL();
   return str??"";
 }
+
+
 Future uploadFile() async{
   if(_photo==null) return;
   final fileName = getRandomString(15)+extension(_photo!.path);
@@ -62,6 +64,7 @@ Future uploadFile() async{
               break;
             case TaskState.success:
               String imgUrl = await getImgUrl(fileName);
+              sendImageUrl(imgUrl);
           }
         });
       }
@@ -70,6 +73,32 @@ Future uploadFile() async{
       }
 }
 
+
+sendImageUrl(String url) async{
+  final content = Msgcontent(
+    uid: user_id,
+    content: url,
+    type: "image",
+    addtime: Timestamp.now(),
+
+  );
+
+  await db.collection("messages").doc(doc_id).collection("messageList").withConverter(
+      fromFirestore: Msgcontent.fromFirestore,
+      toFirestore: (Msgcontent msgcontent, options)
+      =>msgcontent.toFirestore()).add(content).then((DocumentReference doc){
+    print("document snapshot added with id, ${doc.id}");
+    textController.clear();
+    Get.focusScope?.unfocus();
+  });
+
+  await db.collection("messages").doc(doc_id).update({
+    "last_msg":" ❰image❱ ",
+    "last time":Timestamp.now(),
+  },
+  );
+
+}
 
 
   @override
@@ -85,6 +114,10 @@ Future uploadFile() async{
 
   sendMessage()
   async{
+  if(textController.text=="")
+    {
+      textController.text = "HI, FRIEND!";
+    }
     String sendContent = textController.text;
     final content = Msgcontent(
       uid: user_id,
@@ -139,6 +172,25 @@ Future uploadFile() async{
   },
     onError: (error)=>print("Listen failed: $error")
   );
+
+  getLocation();
+}
+
+getLocation() async {
+  try{
+    var user_location = await db.collection("users").where("id", isEqualTo: state.to_uid.value).withConverter(
+        fromFirestore: UserData.fromFirestore,
+        toFirestore: (UserData userdata, options)=> userdata.toFirestore()).get();
+    var location = user_location.docs.first.data().location;
+    if(location!="")
+      {
+        print("my location is: $location");
+        state.to_location.value = location??"unknown";
+      }
+  }catch(e)
+  {
+    print("there is error $e");
+  }
 }
 
 @override

@@ -92,7 +92,7 @@ class ChatPage extends GetView<ChatController> {
                     ),
                     // location
                     Text(
-                      "unknown location",
+                      "Location is private",
                       overflow: TextOverflow.clip,
                       maxLines: 1,
                       style: TextStyle(
@@ -170,10 +170,10 @@ class ChatPage extends GetView<ChatController> {
                     height: 50.h,
                     color: AppColors.primaryBackground,
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         SizedBox(
-                          width: 217.w,
+                          width: 250.w,
                           height: 50.w,
                           child: TextField(
                             keyboardType: TextInputType.multiline,
@@ -190,7 +190,7 @@ class ChatPage extends GetView<ChatController> {
 
                           height: 30.h,
                           width: 30.w,
-                          margin: EdgeInsets.only(left: 10.w),
+                          margin: EdgeInsets.only(left: 10.w, top: 5.h),
                           child: GestureDetector(
                             child: new Icon(Icons.camera_alt_rounded,
                             size: 35.w,

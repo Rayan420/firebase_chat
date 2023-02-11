@@ -65,7 +65,7 @@ class WelcomePage extends GetView<WelcomeController> {
                       fit: BoxFit.fill,
                       image:
                       AssetImage
-                        ("assets/images/banner4.png"),
+                        ("assets/images/banner3.png"),
                     ),
                   ),
                   child: Stack(

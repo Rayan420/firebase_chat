@@ -31,18 +31,22 @@ class ContactList extends GetView<ContactController> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
+
                 padding: EdgeInsets.only(top: 0.w, left: 0.w, right: 15.w),
                 child: SizedBox(
                   width: 54.w,
                   height: 54.w,
-                  child: CachedNetworkImage(imageUrl:"${item.photourl}"),
+                  child: CachedNetworkImage(
+                      imageUrl:"${item.photourl}"),
                 ),
               ),
               Container(
                 width: 250.w,
                 padding: EdgeInsets.only(top: 15.w, left: 0.w, right: 0.w),
-                decoration: const BoxDecoration(border:
+                decoration: const BoxDecoration(
+                  border:
                 Border(
+
                   bottom: BorderSide(
                   width: 1,
                   color: Color(0xffe5efe5),
